@@ -1,0 +1,11 @@
+<ngb-toast
+  *ngIf="mostrar"
+  [ngClass]="toastTipo"
+  [delay]="tiempoActivo"
+  [autohide]="autoOcultar"
+  (mouseenter)="autoOcultar = false"
+  (mouseleave)="autoOcultar = true"
+  (hide)="mostrar = false; autoOcultar = true"
+  [innerHtml]="mensaje | safeHtml"
+>
+</ngb-toast>

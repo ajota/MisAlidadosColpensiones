@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RegistrarComponent } from './registrar/registrar.component';
 import { ListarComponent } from './listar/listar.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [RegistrarComponent, ListarComponent],
   imports: [
-    CommonModule
-  ]
+    SharedModule
+  ],
+  exports: [ RegistrarComponent ]
 })
 export class IndependientesModule { }

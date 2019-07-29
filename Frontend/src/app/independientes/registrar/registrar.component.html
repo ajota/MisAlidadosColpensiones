@@ -1,1 +1,111 @@
-<p>registrar works!</p>
+<div class="row justify-content-center">
+  <div [ngClass]="{'col-6': !enModal, 'col-12': enModal}">
+    <h3 *ngIf="!enModal">Formulario de registro de independientes.</h3><hr *ngIf="!enModal">
+    <form [formGroup]="independientesForm" (ngSubmit)="alGuardarIndependiente()" novalidate>
+      <div class="form-group"><!-- Datos Basicos -->
+        <h5>Datos basicos:</h5>
+        <div class="form-row">
+          <div class="col">
+            <label>Nombre(s):
+                <input type="text" id="msa-numeroDocumento" formControlName="Nombres" class="form-control">
+            </label>
+          </div>
+          <div class="col">
+              <label>Apellido(s):
+                  <input type="text" id="msa-apellidos" formControlName="Apellidos" class="form-control">
+              </label>
+              <div class="invalid-feedback">
+                Este campo es requerido.
+              </div>
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+              <label>Tipo de Documento
+                  <select formControlName="TipoDocumento" class="custom-select">
+                      <option value="0">Seleccione...</option>
+                      <option value="1">C&eacute;dula Ciudadania.</option>
+                      <option value="2">C&eacute;dula Extranjeria</option>
+                  </select>
+              </label>
+              <div class="invalid-feedback">
+                  Este campo es requerido.
+                </div>
+            </div>
+            <div class="col">
+                <label>Numero de Documento:
+                    <input type="text" id="msa-numeroDocumento" formControlName="NumeroDocumento" class="form-control">
+                </label>
+            </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label>Fecha de Nacimiento:
+                <input type="text" id="msa-fechaNacimiento" formControlName="FechaNacimiento" class="form-control">
+            </label>
+          </div>
+          <div class="col">
+            <label>Sexo:
+                <select id="msa-sexo" formControlName="Sexo" class="form-control">
+                  <option value="0">Seleccione...</option>
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>
+                </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group"><!-- Datos Laborales -->
+        <h5>Datos laborales:</h5>
+        <div class="form-row">
+            <div class="col">
+              <label>Oficio / Labor:
+                  <input type="text" id="msa-oficio" formControlName="Oficio" class="form-control">
+              </label>
+            </div>
+            <div class="col">
+                <label>Ingresos Mensuales Aproximados:
+                    <input type="text" id="msa-ingresosMensualesAproximados" formControlName="IngresosMensualesAproximados" class="form-control">
+                </label>
+            </div>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group"><!-- Datos de contacto -->
+        <h5>Datos de contacto</h5>
+        <div class="form-row">
+          <div class="col">
+            <label for="msa-tipo-telefono">Telefono:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label>Tipo
+                    <select type="text" id="msa-tipo-telefono" formControlName="TipoTelefono" class="form-control w-100">
+                      <option value="0">Elige...</option>
+                      <option value="1">Fijo</option>
+                      <option value="2">Celular</option>
+                    </select>
+                </label>
+              </div>
+              <label>Numero:
+                  <input type="text" id="msa-telefono" formControlName="Telefono" class="form-control w-100">
+              </label>
+            </div>
+          </div>
+          <div class="col align-bottom">
+            <label>Correo electronico:
+                <input type="text" id="msa-correo" formControlName="Correo" class="form-control">
+            </label>
+          </div>
+        </div>
+        <div class="form-row" *ngIf="!enModal">
+          <div class="col text-right">
+            <button type="submit" id="msa-guardar-independiente" class="btn btn-primary">Guadar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-toast tipo="exito" [mostrar]="mostrarAviso" tiempoActivo="5000"></app-toast>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AnotacionesRutas } from './shared/rutas.anotation';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Frontend';
+  title = 'Mis Aliados';
+  rutaRegistrar = AnotacionesRutas.independientes.name + AnotacionesRutas.independientes.registrar.uri;
 }

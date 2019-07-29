@@ -1,5 +1,73 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Independiente</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-registrar #registrarComp (alAdicionarIndependiente)="actualizarTablaIndependientes( $event )"  enModal="true"></app-registrar>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-link" (click)="modal.dismiss()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="registrarComp.alGuardarIndependiente()">Guardar</button>
+    </div>
+</ng-template>
+
 <div class="row">
     <div class="col-12">
-        <h1 class="title">Lista de trabajadores independeientes</h1>
+        <h1 class="title">Listado Trabajadores independientes Mis Aliados</h1>
+        <p>metus et enim posuere hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris volutpat velit sed laoreet semper. Aenean ac molestie purus, ut dignissim diam. Donec arcu orci, posuere posuere pellentesque eu, mattis eu tellus. Duis non bibendum leo. Nam et mi sed ante pharetra laoreet.</p>
     </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <div class="table">
+            <table class="table-responsive table-condensed table-hover msa-table">
+                <caption>
+                    <h3 class="title msa-inline-b"> Trabajadores independientes </h3>
+                    <button class="btn btn-primary msa-to-right" (click)="agregarIndependiente( content )">Agregar</button>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Nro. </th>
+                        <th>Nombre(s) </th>
+                        <th>Apellido(s) </th>
+                        <th>Tipo de documento </th>
+                        <th># de documento </th>
+                        <th>Fecha de nacimiento </th>
+                        <th>Sexo</th>
+                        <th>Oficio </th>
+                        <th>Ingresos mensuales aproximados </th>
+                        <th>Tipo de tel&eacute;fono </th>
+                        <th>Tel&eacute;fono </th>
+                        <th>Correo </th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let independiente of independientes">
+                        <td>{{ ( $index + 1 ) }}</td>
+                        <td>{{ independiente.Nombres }}</td>
+                        <td>{{ independiente.Apellidos }}</td>
+                        <td>{{ independiente.TipoDocumento }}</td>
+                        <td>{{ independiente.NumeroDocumento }}</td>
+                        <td>{{ independiente.FechaNacimiento }}</td>
+                        <td>{{ independiente.Sexo }}</td>
+                        <td>{{ independiente.Oficio }}</td>
+                        <td>{{ independiente.IngresosMensualesAproximados }}</td>
+                        <td>{{ independiente.TipoTelefono }}</td>
+                        <td>{{ independiente.Telefono }}</td>
+                        <td>{{ independiente.Correo }}</td>
+                        <td>
+                            <button type="button" class="btn btn-success" (click)="gestionarSolicitud( independiente.IdIndependiente, true )">Aprobar</button>
+                            <button type="button" class="btn btn-danger" (click)="gestionarSolicitud( independiente.IdIndependiente, false )">Negar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-toast tipo="exito" [mostrar]="mostrarAviso" tiempoActivo="5000"></app-toast>

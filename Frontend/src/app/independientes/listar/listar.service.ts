@@ -11,9 +11,16 @@ export class ListarService {
 
   constructor(private httpClient: HttpClient) { }
 
-  obtenerIndependientes() {
+  obtenerIndependientes(): Observable<DatosIndependiente[]> {
     const apiResource = this.host + this.uriResources.obtenerIndependientes;
-    return this.httpClient.get<Observable<DatosIndependiente[]>>(apiResource);
+    return this.httpClient.get<DatosIndependiente[]>(apiResource);
+  }
+
+  guardarEstadoSolicitud( id: number, estado: boolean ) {
+    const apiResource = this.host + this.uriResources.gestionarSolicitud;
+    const peticion =  {idIndependiente: id, aprobacion: estado};
+
+    return this.httpClient.post<boolean>(apiResource, peticion);
   }
 
 }

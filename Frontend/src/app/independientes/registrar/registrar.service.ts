@@ -11,9 +11,9 @@ export class RegistrarService {
 
   constructor(private httpClient: HttpClient) { }
 
-  guardarIndependientes( independiente: DatosIndependiente ) {
+  guardarIndependientes( independiente: DatosIndependiente ): Observable<boolean> {
     const apiResource = this.host + this.uriResources.guardarIndependientes;
-    return this.httpClient.post<Observable<boolean>>(apiResource, independiente);
+    return this.httpClient.post<boolean>(apiResource, independiente);
   }
 
 }

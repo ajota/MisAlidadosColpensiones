@@ -1,12 +1,15 @@
-export interface DatosIndependiente {
-    Tipo_documento: string;
-    Numero_documento: string;
-    Nombre: string;
-    Apellidos: string;
-    Fecha_nacimiento: Date;
-    Oficio: string;
-    Ingresos_mensuales_aproximados: number;
-    Telefono: string;
-    Correo: string;
-    Sexo: string;
+export class DatosIndependiente {
+  IdIndependiente: number;
+  TipoDocumento: number; // selector con valor numerico
+  NumeroDocumento: string;
+  Nombres: string;
+  Apellidos: string;
+  FechaNacimiento: Date;
+  Oficio: string;
+  IngresosMensualesAproximados: number;
+  TipoTelefono: number; // selector con valor numerico
+  Telefono: string;
+  Correo: string;
+  Sexo: number; // selector con valor numerico
+  Aprobado: boolean;
 }

@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ToastComponent implements OnInit {
 
   @Input() mostrar = false;
-  @Input() tipo = 'exito';
+  @Input() tipo = 'exito'; // [exito, error, advetencia]
   @Input() autoOcultar = true;
   @Input() mensaje = 'Operacion exitosa.';
   @Input() tiempoActivo = 5000; // Milisegundos
@@ -17,8 +17,7 @@ export class ToastComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   defineTipo( nombreTipo: string ): { [ key: string]: string } {
     let tipo  = {};

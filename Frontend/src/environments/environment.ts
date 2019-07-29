@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiBaseUrl: '',
+  apiUris: {
+    obtenerIndependientes: '/independientes/Obtener',
+    guardarIndependientes: '/independientes/Guardar',
+    gestionarSolicitud: '/independientes/EstadoSolicitud'
+  }
 };
 
 /*

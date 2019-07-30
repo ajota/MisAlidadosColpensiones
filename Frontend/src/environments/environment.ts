@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: '',
+  apiBaseUrl: 'http://localhost/MisAlidadosModuloColpensiones/backend/MisAliadosAPI',
   apiUris: {
     obtenerIndependientes: '/independientes/Obtener',
+    obtenerMaestroTiposDocumento: '/maestros/TiposDocumento',
+    obtenerMaestroSexos: '/maestros/Sexos',
+    obtenerMaestroTiposTelefono: '/maestros/TiposTelefono',
     guardarIndependientes: '/independientes/Guardar',
     gestionarSolicitud: '/independientes/EstadoSolicitud'
   }

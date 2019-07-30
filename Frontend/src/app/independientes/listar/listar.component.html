@@ -6,7 +6,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <app-registrar #registrarComp (alAdicionarIndependiente)="actualizarTablaIndependientes( $event )"  enModal="true"></app-registrar>
+        <app-registrar #registrarComp (alAdicionarIndependiente)="adicionarIndependienteATabla( $event )"  enModal="true"></app-registrar>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-link" (click)="modal.dismiss()">Cancelar</button>

@@ -4,7 +4,9 @@ import { DatosIndependiente } from '../independientes.model';
 import { RegistrarService } from './registrar.service';
 import { EventEmitter } from 'events';
 import { stringify } from 'querystring';
-import { Subscription, Subscriber } from 'rxjs';
+import { Subscription, Subscriber, Observable } from 'rxjs';
+import { Maestros } from 'src/app/shared/shared.model';
+import { MaestrosService } from 'src/app/shared/maestros.service';
 
 @Component({
   selector: 'app-registrar',
@@ -37,16 +39,26 @@ export class RegistrarComponent implements OnInit, OnDestroy {
 
   mostrarAviso: boolean;
 
+  tiposDocumento$: Observable<Maestros[]>;
+  sexos$: Observable<Maestros[]>;
+  tiposTelefono$: Observable<Maestros[]>;
 
-  constructor( private formBuilder: FormBuilder, private registrarService: RegistrarService ) {
+  constructor( private formBuilder: FormBuilder, private registrarService: RegistrarService, private maestrosService: MaestrosService  ) {
   }
 
   ngOnInit() {
+    this.listasMaestras();
+  }
+
+  listasMaestras() {
+    this.tiposDocumento$ = this.maestrosService.obtenerMaestros( 'TiposDocumento' );
+    this.sexos$ = this.maestrosService.obtenerMaestros( 'Sexos' );
+    this.tiposTelefono$ = this.maestrosService.obtenerMaestros( 'TiposTelefono' );
   }
 
   alGuardarIndependiente(): void {
     this.independiente = this.independientesForm.value;
-    this.registrar$ = this.registrarService.guardarIndependientes(this.independiente).subscribe( resp => {
+    this.registrar$ = this.registrarService.guardarIndependientes( this.independiente ).subscribe( resp => {
 
       if ( resp && this.notificarAdicionIndependiente() ) {
         this.mostrarAviso = true;

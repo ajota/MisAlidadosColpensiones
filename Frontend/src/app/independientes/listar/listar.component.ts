@@ -3,7 +3,9 @@ import { AnotacionesRutas } from '../../shared/rutas.anotation';
 import { DatosIndependiente } from '../independientes.model';
 import { ListarService } from './listar.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subscription, Subscriber } from 'rxjs';
+import { Subscription, Subscriber, Observable } from 'rxjs';
+import { MaestrosService } from 'src/app/shared/maestros.service';
+import { Maestros } from 'src/app/shared/shared.model';
 
 @Component({
   selector: 'app-listar',
@@ -19,15 +21,30 @@ export class ListarComponent implements OnInit, OnDestroy {
 
   listaIndependientes$: Subscription = new Subscriber();
   aprobacion$: Subscription = new Subscriber();
+  tiposDocumento$: Observable<Maestros[]>;
+  sexos$: Observable<Maestros[]>;
+  tiposTelefono$: Observable<Maestros[]>;
 
-  constructor( private listarService: ListarService, private modalService: NgbModal ) { }
+  constructor( private listarService: ListarService, private maestrosService: MaestrosService, private modalService: NgbModal ) { }
 
   ngOnInit() {
-    // this.listarIndependientes();
+    this.listarIndependientes();
+    this.listasMaestras();
   }
 
-  agregarIndependiente( content ) {
+  agregarIndependiente( content ): void {
     this.modalService.open( content, {ariaLabelledBy: 'modal-basic-title'})
+  }
+
+  adicionarIndependienteATabla( event: Event, data: string): void {
+    const nuevoIndependiente = JSON.parse(data);
+    this.independientes.push(nuevoIndependiente);
+  }
+
+  listasMaestras() {
+    this.tiposDocumento$ = this.maestrosService.obtenerMaestros( 'TipodDocumento' );
+    this.sexos$ = this.maestrosService.obtenerMaestros( 'TiposTelefono' );
+    this.tiposTelefono$ = this.maestrosService.obtenerMaestros( 'Sexos' );
   }
 
   listarIndependientes(): void {

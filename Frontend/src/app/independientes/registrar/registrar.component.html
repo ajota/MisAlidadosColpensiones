@@ -24,8 +24,7 @@
               <label>Tipo de Documento
                   <select formControlName="TipoDocumento" class="custom-select">
                       <option value="0">Seleccione...</option>
-                      <option value="1">C&eacute;dula Ciudadania.</option>
-                      <option value="2">C&eacute;dula Extranjeria</option>
+                      <option value="{{tipoDocumento.IdDatoMaestro}}" *ngFor="let tipoDocumento of tiposDocumento$ | async">{{ tipoDocumento.NombreDato}}</option>
                   </select>
               </label>
               <div class="invalid-feedback">
@@ -48,8 +47,7 @@
             <label>Sexo:
                 <select id="msa-sexo" formControlName="Sexo" class="form-control">
                   <option value="0">Seleccione...</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>
+                  <option value="{{ sexo.IdDatoMaestro }}" *ngFor="let sexo of sexos$ | async">{{ sexo.NombreDato }}</option>
                 </select>
             </label>
           </div>
@@ -82,8 +80,7 @@
                 <label>Tipo
                     <select type="text" id="msa-tipo-telefono" formControlName="TipoTelefono" class="form-control w-100">
                       <option value="0">Elige...</option>
-                      <option value="1">Fijo</option>
-                      <option value="2">Celular</option>
+                      <option value="{{tipoTelefono.IdDatoMaestro}}" *ngFor="let tipoTelefono of tiposTelefono$ | async">{{ tipoTelefono.NombreDato }}</option>
                     </select>
                 </label>
               </div>

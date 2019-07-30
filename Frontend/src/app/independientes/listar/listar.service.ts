@@ -10,7 +10,7 @@ export class ListarService {
   uriResources = environment.apiUris;
 
   constructor(private httpClient: HttpClient) { }
-
+  
   obtenerIndependientes(): Observable<DatosIndependiente[]> {
     const apiResource = this.host + this.uriResources.obtenerIndependientes;
     return this.httpClient.get<DatosIndependiente[]>(apiResource);

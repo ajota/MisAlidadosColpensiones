@@ -1,0 +1,203 @@
+{
+  "id": "a227cba3-03ea-44ee-8b53-8d337c5d4365",
+  "version": "2.0",
+  "name": "MisAliadosPruebasFuncionales",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "fcee2241-13e7-44c2-8505-23f381424c51",
+    "name": "Registrar Independiente",
+    "commands": [{
+      "id": "765e9290-ac9d-4f65-b51b-285876cab9a7",
+      "comment": "",
+      "command": "open",
+      "target": "/independientes",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "686bd0de-ff67-4296-80ee-0b4b231f4fd8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1528x1048",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cf111e89-0e01-43fb-9894-1891f03c28fb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Agregar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "90805401-931a-4ea2-b90b-2789c9975a1c",
+      "comment": "",
+      "command": "click",
+      "target": "id=msa-numeroDocumento",
+      "targets": [
+        ["id=msa-numeroDocumento", "id"],
+        ["css=.col:nth-child(1) #msa-numeroDocumento", "css:finder"],
+        ["xpath=//input[@id='msa-numeroDocumento']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8260bbcb-cc81-434a-be25-f3ec4148094e",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-numeroDocumento",
+      "targets": [
+        ["id=msa-numeroDocumento", "id"],
+        ["css=.col:nth-child(1) #msa-numeroDocumento", "css:finder"],
+        ["xpath=//input[@id='msa-numeroDocumento']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Anderson Jovanny"
+    }, {
+      "id": "72a6a04f-528b-43f3-83ba-228ccac2a2a8",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-apellidos",
+      "targets": [
+        ["id=msa-apellidos", "id"],
+        ["css=#msa-apellidos", "css:finder"],
+        ["xpath=//input[@id='msa-apellidos']", "xpath:attributes"],
+        ["xpath=//div[2]/label/input", "xpath:position"]
+      ],
+      "value": "Velez Alvarez"
+    }, {
+      "id": "de2f7083-bd0b-4f7a-96c3-11975bd22e65",
+      "comment": "",
+      "command": "select",
+      "target": "css=.custom-select",
+      "targets": [],
+      "value": "label=Cédula Ciudadania."
+    }, {
+      "id": "94cd1d36-8604-4e25-b17e-21ecca7fe47b",
+      "comment": "",
+      "command": "type",
+      "target": "css=.col:nth-child(2) #msa-numeroDocumento",
+      "targets": [
+        ["css=.col:nth-child(2) #msa-numeroDocumento", "css:finder"],
+        ["xpath=(//input[@id='msa-numeroDocumento'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/label/input", "xpath:position"]
+      ],
+      "value": "1128406999"
+    }, {
+      "id": "ef2a3359-ec5c-42f5-ac8d-559aa972bd23",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-fechaNacimiento",
+      "targets": [
+        ["id=msa-fechaNacimiento", "id"],
+        ["css=#msa-fechaNacimiento", "css:finder"],
+        ["xpath=//input[@id='msa-fechaNacimiento']", "xpath:attributes"],
+        ["xpath=//div[3]/div/label/input", "xpath:position"]
+      ],
+      "value": "06/09/1987"
+    }, {
+      "id": "15228e47-3422-4109-b239-db149505bbea",
+      "comment": "",
+      "command": "select",
+      "target": "id=msa-sexo",
+      "targets": [],
+      "value": "label=Masculino"
+    }, {
+      "id": "b76521cb-ede3-4f62-8d9d-2cb8de52d6dd",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-oficio",
+      "targets": [
+        ["id=msa-oficio", "id"],
+        ["css=#msa-oficio", "css:finder"],
+        ["xpath=//input[@id='msa-oficio']", "xpath:attributes"],
+        ["xpath=//div[2]/div/div/label/input", "xpath:position"]
+      ],
+      "value": "Desarrollador"
+    }, {
+      "id": "c7995bc6-c2de-4dcc-ab7b-496a8c3d1207",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-ingresosMensualesAproximados",
+      "targets": [
+        ["id=msa-ingresosMensualesAproximados", "id"],
+        ["css=#msa-ingresosMensualesAproximados", "css:finder"],
+        ["xpath=//input[@id='msa-ingresosMensualesAproximados']", "xpath:attributes"],
+        ["xpath=//div[2]/div/div[2]/label/input", "xpath:position"]
+      ],
+      "value": "2000000"
+    }, {
+      "id": "9e14d206-5fd0-49f1-a9ac-5ac62c838ae6",
+      "comment": "",
+      "command": "select",
+      "target": "id=msa-tipo-telefono",
+      "targets": [],
+      "value": "label=Fijo"
+    }, {
+      "id": "0482c984-fbd7-4ae3-ae6d-444e2e09daf5",
+      "comment": "",
+      "command": "select",
+      "target": "id=msa-tipo-telefono",
+      "targets": [],
+      "value": "label=Celular"
+    }, {
+      "id": "8df17a5b-0f4d-4704-803f-1678edec0921",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-telefono",
+      "targets": [
+        ["id=msa-telefono", "id"],
+        ["css=#msa-telefono", "css:finder"],
+        ["xpath=//input[@id='msa-telefono']", "xpath:attributes"],
+        ["xpath=//div[3]/div/div/div/label/input", "xpath:position"]
+      ],
+      "value": "3186555658"
+    }, {
+      "id": "a8a6a10f-d1cd-41a9-b303-2c05fcb7457a",
+      "comment": "",
+      "command": "type",
+      "target": "id=msa-correo",
+      "targets": [
+        ["id=msa-correo", "id"],
+        ["css=#msa-correo", "css:finder"],
+        ["xpath=//input[@id='msa-correo']", "xpath:attributes"],
+        ["xpath=//div[3]/div/div[2]/label/input", "xpath:position"]
+      ],
+      "value": "ajota06@yopmail.com"
+    }, {
+      "id": "2e7e61e4-d0f4-4d1c-9e31-9d64702ecfca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.align-bottom",
+      "targets": [
+        ["css=.align-bottom", "css:finder"],
+        ["xpath=//div[3]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "13e1b33c-52cf-4dd3-a4cb-cd7fe69ba359",
+      "comment": "",
+      "command": "click",
+      "target": "css=.modal-footer > .btn-primary",
+      "targets": [
+        ["css=.modal-footer > .btn-primary", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "65a8e468-62b5-425b-aaa5-93daeb7f1ffd",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}

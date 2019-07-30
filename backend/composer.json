@@ -1,0 +1,16 @@
+{
+    "name": "ajota/misaliadoscolpensiones",
+    "description": "Modulo de registro de trabajadores independientes",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ander velez",
+            "email": "ajota06@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.7",
+        "codeigniter/framework": "3.1.10"
+    }
+}

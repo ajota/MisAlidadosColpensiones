@@ -1,10 +1,10 @@
 export class DatosIndependiente {
-  IdIndependiente: number;
+  IdIndependientes: number;
   TipoDocumento: number; // selector con valor numerico
   NumeroDocumento: string;
   Nombres: string;
   Apellidos: string;
-  FechaNacimiento: Date;
+  FechaNacimiento: any;
   Oficio: string;
   IngresosMensualesAproximados: number;
   TipoTelefono: number; // selector con valor numerico

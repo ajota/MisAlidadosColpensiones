@@ -1,6 +1,14 @@
 <div class="container-fluid">
+    <hr class="msa-no-mrgs-btt">
     <div class="row">
-        <div class="col-12"><a [routerLink]="[rutaRegistrar]" href="">Registar a Independiente</a></div>
+        <div class="col-2 text-center">
+          <h3>Mis Aliados</h3>
+        </div>
+      <div class="col-10">
+          <a [routerLink]="[rutaRegistrar]" class="btn btn-link" href="">Registar a Independiente</a>
+          <a [routerLink]="[rutaListar]" [routerLinkActive]="['btn', 'btn-outline-secondary']" class="btn btn-link" href=""> Ver listado</a>
+      </div>
     </div>
+    <div class="row"><div class="col-12"><hr class="msa-no-mrgs"></div></div>
   <router-outlet></router-outlet>
 </div>

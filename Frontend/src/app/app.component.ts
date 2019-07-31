@@ -9,4 +9,5 @@ import { AnotacionesRutas } from './shared/rutas.anotation';
 export class AppComponent {
   title = 'Mis Aliados';
   rutaRegistrar = AnotacionesRutas.independientes.name + AnotacionesRutas.independientes.registrar.uri;
+  rutaListar = AnotacionesRutas.independientes.name + AnotacionesRutas.independientes.listar.uri;
 }

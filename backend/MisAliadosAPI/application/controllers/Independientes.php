@@ -14,7 +14,7 @@ class Independientes extends \Restserver\Libraries\REST_Controller {
 	public function index_get()
 	{
 
-		$consulta = $this->db->get('independientes');
+		$consulta = $this->db->query('CALL get_independientes();');
 		$independientes = $consulta->result_array();
 
 		$this->response( $independientes );
@@ -33,13 +33,13 @@ class Independientes extends \Restserver\Libraries\REST_Controller {
 		if ( isset( $independiente_POST ) ) 
 		{
 
-			$independiente = $this->post();
+			$independiente = $independiente_POST;
 			$consulta = $this->db->insert('independientes', $independiente);
 			$resultadoCreacion = $consulta;
 
 			if ( $resultadoCreacion )
 			{	
-				$this->response( $consulta->result() );
+				$this->response( $consulta );
 			}
 			else
 			{
@@ -53,10 +53,45 @@ class Independientes extends \Restserver\Libraries\REST_Controller {
 			
 		}
 	}
-
+	
 	public function guardar_post()
 	{
 		$this->index_post();
+	}
+	
+	public function index_patch( $idIndependiente = '' ) 
+	{
+		$independiente_PATCH  = $this->patch();
+
+		if ( isset( $independiente_PATCH ) && isset( $idIndependiente ) ) 
+		{
+
+			$independiente = $independiente_PATCH;
+
+			$consulta = $this->db->update('independientes', $independiente, array( 'IdIndependientes' => $idIndependiente ) );
+
+			$resultadoCambio = $consulta;
+
+			if ( $resultadoCambio )
+			{	
+				$this->response( $consulta );
+			}
+			else
+			{
+				$this->response( FALSE, 400 );
+			}
+
+		}
+		else
+		{
+			throw new Exception("No se pudo identificar ningun objeto de independiente para gestionar o el no se encontro el identificador de cambio. ", 1);
+			
+		}
+	}
+
+	public function estadosolicitud_patch( $idIndependiente )
+	{
+		$this->index_patch( $idIndependiente );
 	}
 
 }

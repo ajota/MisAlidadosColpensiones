@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AnotacionesRutas } from '../../shared/rutas.anotation';
 import { DatosIndependiente } from '../independientes.model';
 import { ListarService } from './listar.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subscription, Subscriber, Observable } from 'rxjs';
-import { MaestrosService } from 'src/app/shared/maestros.service';
-import { Maestros } from 'src/app/shared/shared.model';
+import { Subscription, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-listar',
@@ -21,30 +19,21 @@ export class ListarComponent implements OnInit, OnDestroy {
 
   listaIndependientes$: Subscription = new Subscriber();
   aprobacion$: Subscription = new Subscriber();
-  tiposDocumento$: Observable<Maestros[]>;
-  sexos$: Observable<Maestros[]>;
-  tiposTelefono$: Observable<Maestros[]>;
 
-  constructor( private listarService: ListarService, private maestrosService: MaestrosService, private modalService: NgbModal ) { }
+  constructor( private listarService: ListarService, private modalService: NgbModal ) { }
 
   ngOnInit() {
     this.listarIndependientes();
-    this.listasMaestras();
   }
 
   agregarIndependiente( content ): void {
-    this.modalService.open( content, {ariaLabelledBy: 'modal-basic-title'})
+    this.modalService.open( content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
-  adicionarIndependienteATabla( event: Event, data: string): void {
+  adicionarIndependienteATabla( data: string ): void {
     const nuevoIndependiente = JSON.parse(data);
     this.independientes.push(nuevoIndependiente);
-  }
-
-  listasMaestras() {
-    this.tiposDocumento$ = this.maestrosService.obtenerMaestros( 'TipodDocumento' );
-    this.sexos$ = this.maestrosService.obtenerMaestros( 'TiposTelefono' );
-    this.tiposTelefono$ = this.maestrosService.obtenerMaestros( 'Sexos' );
+    this.modalService.dismissAll();
   }
 
   listarIndependientes(): void {
@@ -59,16 +48,16 @@ export class ListarComponent implements OnInit, OnDestroy {
     this.aprobacion$ = this.listarService.guardarEstadoSolicitud(idIndependiente, aprobar).subscribe( resp => {
       if ( resp ) {
         this.mostrarAviso = true;
-        this.actualizarLista( idIndependiente );
+        this.actualizarLista( idIndependiente, aprobar );
       }
     }, err => {
       throw console.error( err );
     });
   }
 
-  actualizarLista( idIndependiente: number ) {
-    const indexIndependiente = this.independientes.findIndex( item => item.IdIndependiente === idIndependiente );
-    this.independientes[indexIndependiente].Aprobado = true;
+  actualizarLista( idIndependiente: number, estado: boolean ) {
+    const indexIndependiente = this.independientes.findIndex( item => item.IdIndependientes === idIndependiente );
+    this.independientes[indexIndependiente].Aprobado = estado;
   }
 
   ngOnDestroy() {

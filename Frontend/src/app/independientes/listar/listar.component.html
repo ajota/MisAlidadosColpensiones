@@ -6,11 +6,11 @@
         </button>
     </div>
     <div class="modal-body">
-        <app-registrar #registrarComp (alAdicionarIndependiente)="adicionarIndependienteATabla( $event )"  enModal="true"></app-registrar>
+        <app-registrar #registrarComp (alAdicionarIndependiente)="adicionarIndependienteATabla( $event )" enModal="true"></app-registrar>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-link" (click)="modal.dismiss()">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="registrarComp.alGuardarIndependiente()">Guardar</button>
+        <button type="button" class="btn btn-primary" (click)="registrarComp.alGuardarIndependiente()" [disabled]="registrarComp.independientesForm.invalid">Guardar</button>
     </div>
 </ng-template>
 
@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-12">
         <div class="table">
-            <table class="table-responsive table-condensed table-hover msa-table">
+            <table class="table-responsive table-condensed table-sm table-hover table-striped msa-table">
                 <caption>
                     <h3 class="title msa-inline-b"> Trabajadores independientes </h3>
                     <button class="btn btn-primary msa-to-right" (click)="agregarIndependiente( content )">Agregar</button>
@@ -46,8 +46,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let independiente of independientes">
-                        <td>{{ ( $index + 1 ) }}</td>
+                    <tr *ngFor="let independiente of independientes; index as i;">
+                        <td>{{ ( i + 1 ) }}</td>
                         <td>{{ independiente.Nombres }}</td>
                         <td>{{ independiente.Apellidos }}</td>
                         <td>{{ independiente.TipoDocumento }}</td>
@@ -60,8 +60,8 @@
                         <td>{{ independiente.Telefono }}</td>
                         <td>{{ independiente.Correo }}</td>
                         <td>
-                            <button type="button" class="btn btn-success" (click)="gestionarSolicitud( independiente.IdIndependiente, true )">Aprobar</button>
-                            <button type="button" class="btn btn-danger" (click)="gestionarSolicitud( independiente.IdIndependiente, false )">Negar</button>
+                            <button type="button" class="btn btn-success" (click)="gestionarSolicitud( independiente.IdIndependientes, true )" *ngIf="( independiente.Aprobado == '0')">Aprobar</button>
+                            <button type="button" class="btn btn-danger" (click)="gestionarSolicitud( independiente.IdIndependientes, false )" *ngIf="( independiente.Aprobado == '1')">Negar</button>
                         </td>
                     </tr>
                 </tbody>

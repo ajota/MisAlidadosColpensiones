@@ -1,12 +1,11 @@
-import { Component, OnInit, Output, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, Input, OnDestroy, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatosIndependiente } from '../independientes.model';
 import { RegistrarService } from './registrar.service';
-import { EventEmitter } from 'events';
-import { stringify } from 'querystring';
 import { Subscription, Subscriber, Observable } from 'rxjs';
 import { Maestros } from 'src/app/shared/shared.model';
 import { MaestrosService } from 'src/app/shared/maestros.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registrar',
@@ -17,24 +16,23 @@ import { MaestrosService } from 'src/app/shared/maestros.service';
 export class RegistrarComponent implements OnInit, OnDestroy {
 
   @Input() enModal = false;
-
-  @Output() alAdicionarIndepeniente = new EventEmitter();
+  @Output() alAdicionarIndependiente = new EventEmitter();
 
   independiente = new DatosIndependiente();
   registrar$: Subscription = new Subscriber();
 
   independientesForm = this.formBuilder.group({
-    TipoDocumento:                [ 0, Validators.required],
+    TipoDocumento:                ['', Validators.required],
     NumeroDocumento:              ['', Validators.required],
     Nombres:                      ['', Validators.required],
     Apellidos:                    ['', Validators.required],
-    FechaNacimiento:              ['', Validators.required],
+    FechaNacimiento:              [null, Validators.required],
     Oficio:                       ['', Validators.required],
     IngresosMensualesAproximados: ['', Validators.required],
-    TipoTelefono:                 [ 0, Validators.required],
+    TipoTelefono:                 ['', Validators.required],
     Telefono:                     ['', Validators.required],
     Correo:                       ['', Validators.required],
-    Sexo:                         [ 0, Validators.required]
+    Sexo:                         ['', Validators.required]
   });
 
   mostrarAviso: boolean;
@@ -43,8 +41,12 @@ export class RegistrarComponent implements OnInit, OnDestroy {
   sexos$: Observable<Maestros[]>;
   tiposTelefono$: Observable<Maestros[]>;
 
-  constructor( private formBuilder: FormBuilder, private registrarService: RegistrarService, private maestrosService: MaestrosService  ) {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private registrarService: RegistrarService,
+    private maestrosService: MaestrosService,
+    private date: DatePipe
+  ) {}
 
   ngOnInit() {
     this.listasMaestras();
@@ -58,9 +60,13 @@ export class RegistrarComponent implements OnInit, OnDestroy {
 
   alGuardarIndependiente(): void {
     this.independiente = this.independientesForm.value;
-    this.registrar$ = this.registrarService.guardarIndependientes( this.independiente ).subscribe( resp => {
+    const fechaNac = this.independiente.FechaNacimiento;
+    const fechaFormato = new Date(fechaNac.year, fechaNac.month, fechaNac.day ).toDateString();
+    this.independiente.FechaNacimiento = this.date.transform( Date.parse( fechaFormato ), 'yyyy-MM-dd');
 
-      if ( resp && this.notificarAdicionIndependiente() ) {
+    this.registrar$ = this.registrarService.guardarIndependientes( this.independiente ).subscribe( resp => {
+      if ( resp ) {
+        this.notificarAdicionIndependiente();
         this.mostrarAviso = true;
         this.independientesForm.reset();
       }
@@ -71,8 +77,8 @@ export class RegistrarComponent implements OnInit, OnDestroy {
   }
 
 
-  notificarAdicionIndependiente(): boolean {
-    return this.alAdicionarIndepeniente.emit(stringify(this.independiente));
+  notificarAdicionIndependiente() {
+     this.alAdicionarIndependiente.emit( JSON.stringify( this.independiente ) );
   }
 
   ngOnDestroy() {

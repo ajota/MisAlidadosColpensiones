@@ -31,12 +31,12 @@ export class ListarComponent implements OnInit, OnDestroy {
   }
 
   adicionarIndependienteATabla( data: string ): void {
-    const nuevoIndependiente = JSON.parse(data);
-    this.independientes.push(nuevoIndependiente);
+    this.listarIndependientes();
     this.modalService.dismissAll();
   }
 
   listarIndependientes(): void {
+    this.listaIndependientes$.unsubscribe();
     this.listaIndependientes$ = this.listarService.obtenerIndependientes().subscribe( resp => {
       this.independientes = resp;
     }, err => {

@@ -60,8 +60,8 @@
                         <td>{{ independiente.Telefono }}</td>
                         <td>{{ independiente.Correo }}</td>
                         <td>
-                            <button type="button" class="btn btn-success" (click)="gestionarSolicitud( independiente.IdIndependientes, true )" *ngIf="( independiente.Aprobado == '0')">Aprobar</button>
-                            <button type="button" class="btn btn-danger" (click)="gestionarSolicitud( independiente.IdIndependientes, false )" *ngIf="( independiente.Aprobado == '1')">Negar</button>
+                            <button type="button" class="btn btn-success" (click)="gestionarSolicitud( independiente.IdIndependientes, true )" *ngIf="independiente.Aprobado == '0'">Aprobar</button>
+                            <button type="button" class="btn btn-danger" (click)="gestionarSolicitud( independiente.IdIndependientes, false )" *ngIf="independiente.Aprobado == '1'">Rechazar</button>
                         </td>
                     </tr>
                 </tbody>

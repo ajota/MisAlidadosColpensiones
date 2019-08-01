@@ -1,5 +1,5 @@
 # Mis Aliados (Colpensiones): #
-Este proyecto esta construido con las siguientes tecnologias:
+Este proyecto esta constituido de siguiente manera.
 
 ## Backend ##
 
@@ -8,7 +8,7 @@ Este proyecto esta construido con las siguientes tecnologias:
     <br>Formato JSON: ![Formato JSON](https://snag.gy/WcsR4t.jpg)
     Formato XML: ![Formato JSON](https://snag.gy/c9pHxG.jpg)
 
-* **MYSQL**: Se desarrollo un modelo de db con el cual se desarrollo la solucion relacional de datos.
+* **MYSQL**: Se creo un modelo de db con el cual se desarrollo la solucion relacional de datos.
     - **Ejemplo:** ![Base de datos](https://snag.gy/wyXx7Q.jpg)
 
 ## Frontend ##
@@ -16,4 +16,4 @@ Este proyecto esta construido con las siguientes tecnologias:
 * **ANGULAR -> con [ng-bootstrap (scss)](https://ng-bootstrap.github.io/#/home)** : El modelo seguido para la creacion del proyecto es el que sugiere el Angular Style Guide escrito por Jhon Papa.
 
 ---
-Este proyecto cuenta con todos los recursos relacionados a la creacion y puesta en marcha del mismo. Se puede usar un servidor apache como **XAMPP** para el montaje del servidor y a instalacion de la base de datos, luego en el frontend solo es necesario cambiar la configuracion del archivo **environment** para direccionar en punto de acceso a datos de la aplicacion.
+Este proyecto cuenta con todos los recursos relacionados a la creacion y puesta en marcha del mismo. Se puede usar un servidor apache como **XAMPP** para el montaje del servidor y la instalacion de la base de datos, luego, en el frontend solo es necesario cambiar la configuracion del archivo **environment** para direccionar el punto de acceso a datos de la aplicacion.
